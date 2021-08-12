@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0cperson.proto\"Q\n\x06Person\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x14\n\x0c\x63ompany_name\x18\x04 \x01(\t\"&\n\nPersonList\x12\x18\n\x07persons\x18\x01 \x03(\x0b\x32\x07.Person\"\x1b\n\rPersonRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"\x13\n\x11PersonListRequest2v\n\rPersonService\x12\x1a\n\x06\x43reate\x12\x07.Person\x1a\x07.Person\x12)\n\x06GetAll\x12\x12.PersonListRequest\x1a\x0b.PersonList\x12\x1e\n\x03Get\x12\x0e.PersonRequest\x1a\x07.Personb\x06proto3'
+  serialized_pb=b'\n\x0cperson.proto\"Q\n\x06Person\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x14\n\x0c\x63ompany_name\x18\x04 \x01(\t\"&\n\nPersonList\x12\x18\n\x07persons\x18\x01 \x03(\x0b\x32\x07.Person\"\x1b\n\rPersonRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"\x13\n\x11PersonListRequest2Z\n\rPersonService\x12)\n\x06GetAll\x12\x12.PersonListRequest\x1a\x0b.PersonList\x12\x1e\n\x03Get\x12\x0e.PersonRequest\x1a\x07.Personb\x06proto3'
 )
 
 
@@ -211,22 +211,12 @@ _PERSONSERVICE = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=189,
-  serialized_end=307,
+  serialized_end=279,
   methods=[
-  _descriptor.MethodDescriptor(
-    name='Create',
-    full_name='PersonService.Create',
-    index=0,
-    containing_service=None,
-    input_type=_PERSON,
-    output_type=_PERSON,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
   _descriptor.MethodDescriptor(
     name='GetAll',
     full_name='PersonService.GetAll',
-    index=1,
+    index=0,
     containing_service=None,
     input_type=_PERSONLISTREQUEST,
     output_type=_PERSONLIST,
@@ -236,7 +226,7 @@ _PERSONSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='Get',
     full_name='PersonService.Get',
-    index=2,
+    index=1,
     containing_service=None,
     input_type=_PERSONREQUEST,
     output_type=_PERSON,

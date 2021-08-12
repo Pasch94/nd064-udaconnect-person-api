@@ -27,7 +27,6 @@ message PersonRequest {
 message PersonListRequest {}
 
 service PersonService {
-  rpc Create(Person) returns (Person);
   rpc GetAll(PersonListRequest) returns (PersonList);
   rpc Get(PersonRequest) returns (Person);
 }
