@@ -30,8 +30,8 @@ kafka_producer = KafkaProducer(
         client_id=__name__,
         value_serializer=lambda m: json.dumps(m).encode('utf-8'))
 
-GRPC_PORT = os.getenv('GRPC_PORT', '5005')
-GRPC_HOST = os.getenv('GRPC_HOST', 'localhost')
+GRPC_PORT = os.getenv('GRPC_PERSON_PORT', '6005')
+GRPC_HOST = os.getenv('GRPC_PERSON_HOST', 'localhost')
 
 print(':'.join([GRPC_HOST, GRPC_PORT]))
 GRPC_CHANNEL = grpc.insecure_channel(':'.join([GRPC_HOST, GRPC_PORT]), options=(('grpc.enable_http_proxy', 0),))
@@ -50,10 +50,7 @@ class PersonsResource(Resource):
     @responds(schema=PersonSchema, many=True)
     def get(self) -> List[Person]:
         person_list = grpc_stub.GetAll(PersonListRequest())
-        # TODO need to rearrange data here?
-        # Lets check the data:
-        print(person_list)
-        return person_list 
+        return person_list.persons 
 
 
 @api.route("/persons/<person_id>")
@@ -62,8 +59,6 @@ class PersonResource(Resource):
     @responds(schema=PersonSchema)
     def get(self, person_id) -> Person:
         person = grpc_stub.Get(PersonRequest(id=int(person_id)))
-        print("Got grpc response: {}".format(person))
-        # Maybe need to reformat / assign here
         return person
 
 
